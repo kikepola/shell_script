@@ -78,7 +78,7 @@ somar(){
     do
         echo "Digite "$i" numero:"
         read a
-        resp=$(( resp+$a ))
+        resp=$( echo "scale=2 ;$resp+$a" | bc )
         i=$(( i+1))
     done
     #exibir para o usuario
@@ -103,7 +103,7 @@ subtrair(){
     do
         echo "Digite "$i" numero:"
         read a
-        resp=$(( resp-$a ))
+        resp=$( echo "scale=2 ;$resp-$a" | bc )
         i=$(( i+1))
     done
     #exibir para o usuario
@@ -127,7 +127,7 @@ multiplicar(){
     do
         echo "Digite "$i" numero:"
         read a
-        resp=$(( resp*$a ))
+        resp=$( echo "scale=2 ;$resp*$a" | bc )
         i=$(( i+1))
     done
     #exibir para o usuario
@@ -151,7 +151,7 @@ dividir(){
     do
         echo "Digite "$i" numero:"
         read a
-        resp=$(( resp/$a ))
+        resp=$( echo "scale=2 ;$resp/$a" | bc )
         i=$(( i+1))
     done
     #exibir para o usuario
