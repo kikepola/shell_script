@@ -14,13 +14,14 @@ main(){
     echo "- = 2"
     echo "* = 3"
     echo "/ = 4"
-    echo "sair = 5"
+    echo "sqrt = 5"
+    echo "sair = 6"
     echo "==============="
     #escolher opção desejada
     echo "Escolha sua opção :"
     read opcao
     #manter a calculadora em loop até opcao ser sair
-    while [ $opcao != 5 ]
+    while [ $opcao != 6 ]
     do
         case $opcao in
         "1")
@@ -39,10 +40,23 @@ main(){
         #chama função de dividir
             dividir
         ;;
+        "5")
+        #chama função de raiz
+            raiz
+        ;;
         esac
-        #pedir novamente a opção desejada pelo usuario
-        echo "Escolha sua opção :"
-        read opcao
+
+        #Verificar se opção é valida
+        if [ "$opcao" -gt "6" ]
+        then 
+        #exit se a opcao for invalida
+            echo "Opção não valida!"
+            exit
+        else
+            #pedir novamente a opção desejada pelo usuario
+            echo "Escolha sua opção :"
+            read opcao
+        fi
     done
     }
 #função de soma
@@ -63,7 +77,7 @@ somar(){
     done
     #exibir para o usuario
     echo "======="
-    echo "=  $resp  ="
+    echo "$resp  "
     echo "======="
 }
 #função de subtração
@@ -88,7 +102,7 @@ subtrair(){
     done
     #exibir para o usuario
     echo "======="
-    echo "=  $resp  ="
+    echo "$resp  "
     echo "======="
 }
 #função de multiplicação
@@ -112,7 +126,7 @@ multiplicar(){
     done
     #exibir para o usuario
     echo "======="
-    echo "=  $resp  ="
+    echo "$resp  "
     echo "======="
 }
 #função de divisão
@@ -136,7 +150,16 @@ dividir(){
     done
     #exibir para o usuario
     echo "======="
-    echo "=  $resp  ="
+    echo "$resp  "
+    echo "======="
+}
+
+raiz(){
+    #numero de numeros a serem manipulados
+    echo "Digite um valor para tirar raiz: "
+    read val
+    echo "======="
+    echo "sqrt ($val)" | bc
     echo "======="
 }
 
