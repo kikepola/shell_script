@@ -29,5 +29,19 @@ echo
 echo "entre CPF"
 read cpf
 echo $cpf >> arquivo.cad
-./cpf.sh $cpf
+echo $cpf > teste.cad
+
+
+cpfState=`python2 teste.py < teste.cad`
+
+if [ $cpfState = "True" ]
+then
+    ./cadv2.sh
+    rm teste.cad
+    clear
+else
+    ./valida.sh
+fi
+#./cpf.sh $cpf
+
 
